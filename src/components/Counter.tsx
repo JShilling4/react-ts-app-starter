@@ -1,6 +1,7 @@
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import { decrement, increment } from '../redux/counterSlice';
 import { AppDispatch, RootState } from '../redux/store';
+import Button from './Button';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -8,17 +9,27 @@ const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const Counter = () => {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
+  const handleIncrementClick = () => dispatch(increment());
+  const handleDecrementClick = () => dispatch(decrement());
 
   return (
     <div>
       <div>
-        <button aria-label="Increment value" onClick={() => dispatch(increment())}>
+        <Button
+          ariaLabel="Increment value"
+          onClick={handleIncrementClick}
+          className="rounded-lg p-4 mr-2 text-white"
+        >
           Increment
-        </button>
+        </Button>
         <span>{count}</span>
-        <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
+        <Button
+          aria-label="Decrement value"
+          onClick={handleDecrementClick}
+          className="rounded-lg p-4 ml-2 text-white"
+        >
           Decrement
-        </button>
+        </Button>
       </div>
     </div>
   );
