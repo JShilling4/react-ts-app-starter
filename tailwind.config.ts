@@ -1,5 +1,7 @@
+import daisyui from 'daisyui';
+
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}', './public/index.html'],
   theme: {},
-  plugins: [],
+  plugins: [daisyui],
 };
