@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
-type ButtonProps = {
+export type ButtonProps = {
   children: ReactNode;
   onClick?: MouseEventHandler;
   className?: string;
@@ -8,9 +8,11 @@ type ButtonProps = {
 };
 
 const Button = ({ children, onClick, className, ariaLabel }: ButtonProps) => {
+  const defaultClasses = 'btn';
+
   return (
     <button
-      className={className ? `${className} bg-blue-500` : ''}
+      className={className ? `${className} ${defaultClasses}` : defaultClasses}
       onClick={onClick}
       aria-label={ariaLabel}
     >
@@ -19,4 +21,4 @@ const Button = ({ children, onClick, className, ariaLabel }: ButtonProps) => {
   );
 };
 
-export default Button;
+export { Button };
