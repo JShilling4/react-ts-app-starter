@@ -7,14 +7,19 @@ export type ButtonProps = {
   ariaLabel?: string;
 };
 
-const Button = ({ children, onClick, className, ariaLabel }: ButtonProps) => {
+const Button = ({
+  children,
+  onClick,
+  className = '',
+  ariaLabel,
+}: ButtonProps) => {
   const defaultClasses = 'btn';
 
   return (
     <button
-      className={className ? `${className} ${defaultClasses}` : defaultClasses}
-      onClick={onClick}
+      className={`${className} ${defaultClasses}`.trim()}
       aria-label={ariaLabel}
+      onClick={onClick}
     >
       {children}
     </button>
