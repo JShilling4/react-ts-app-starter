@@ -1,3 +1,4 @@
+import { ViewContainer } from '../components/layout/ViewContainer';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Form';
 
@@ -7,7 +8,7 @@ function HomePage() {
   }
 
   return (
-    <>
+    <ViewContainer>
       <h1>Home Page</h1>
       <Button
         onClick={handleClick}
@@ -17,7 +18,7 @@ function HomePage() {
         Click Me
       </Button>
       <Input type="text" label="Test Label" id="testInput" />
-    </>
+    </ViewContainer>
   );
 }
 

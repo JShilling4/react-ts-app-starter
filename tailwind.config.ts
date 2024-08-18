@@ -2,7 +2,13 @@ import daisyui from 'daisyui';
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}', './public/index.html'],
-  theme: {},
+  theme: {
+    extend: {
+      transitionProperty: {
+        size: 'margin, padding, height, width',
+      },
+    },
+  },
   plugins: [daisyui],
   daisyui: {
     themes: [
