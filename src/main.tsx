@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import App from './App.tsx';
 import './App.css';
 import {
   faMagnifyingGlass,
@@ -14,6 +13,8 @@ import {
   faLink,
   faGear,
 } from '@fortawesome/free-solid-svg-icons';
+import { RouterProvider } from 'react-router-dom';
+import router from './router/index.ts';
 
 library.add(
   faMagnifyingGlass,
@@ -29,7 +30,7 @@ const root = createRoot(document.getElementById('root') as Element);
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 );

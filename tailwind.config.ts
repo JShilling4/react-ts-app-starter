@@ -6,6 +6,7 @@ export default {
     extend: {
       transitionProperty: {
         size: 'margin, padding, height, width',
+        palette: 'color, background-color',
       },
     },
   },

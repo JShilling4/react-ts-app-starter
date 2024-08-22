@@ -1,20 +1,27 @@
 import HomePage from '../pages/HomePage';
 import NotFound from '../pages/NotFound';
+import FirstPage from '../pages/FirstPage';
 import SecondPage from '../pages/SecondPage';
-import ThirdPage from '../pages/ThirdPage';
+import App from '../App';
 
 const routes = [
   {
     path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/page2',
-    element: <SecondPage />,
-  },
-  {
-    path: '/page3',
-    element: <ThirdPage />,
+    element: <App />,
+    children: [
+      {
+        path: 'dashboard',
+        element: <HomePage />,
+      },
+      {
+        path: 'page1',
+        element: <FirstPage />,
+      },
+      {
+        path: 'page2',
+        element: <SecondPage />,
+      },
+    ],
   },
   {
     path: '*',

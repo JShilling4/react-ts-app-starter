@@ -5,6 +5,7 @@ type IconProps = {
   name: string;
   className?: string;
   size?: SizeProp;
+  fixedWidth?: boolean;
 };
 
 export const IconNames = {
@@ -17,16 +18,21 @@ export const IconNames = {
 } as const;
 export type IconNames = (typeof IconNames)[keyof typeof IconNames];
 
-const Icon = ({ name, className, size = '2x' }: IconProps) => {
-  const defaultClasses = '';
-  const classNames = `${className} ${defaultClasses}`.trim();
+const Icon = ({
+  name,
+  className,
+  size = '2x',
+  fixedWidth = false,
+}: IconProps) => {
+  const defaultClasses = 'text-white';
+  const classNames = `${defaultClasses} ${className}`.trim();
 
   return (
     <FontAwesomeIcon
       icon={name as IconProp}
       className={classNames}
       size={size}
-      color="white"
+      fixedWidth={fixedWidth}
     />
   );
 };
