@@ -1,31 +1,53 @@
-import HomePage from '../pages/HomePage';
-import NotFound from '../pages/NotFound';
-import FirstPage from '../pages/FirstPage';
-import SecondPage from '../pages/SecondPage';
-import App from '../App';
+import { lazy, Suspense } from 'react';
+
+const App = lazy(() => import('../App'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const FirstPage = lazy(() => import('../pages/FirstPage'));
+const SecondPage = lazy(() => import('../pages/SecondPage'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const routes = [
   {
     path: '/',
-    element: <App />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <App />
+      </Suspense>
+    ),
     children: [
       {
         path: 'dashboard',
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: 'page1',
-        element: <FirstPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <FirstPage />
+          </Suspense>
+        ),
       },
       {
         path: 'page2',
-        element: <SecondPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <SecondPage />
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: '*',
-    element: <NotFound />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <NotFound />
+      </Suspense>
+    ),
   },
 ];
 
