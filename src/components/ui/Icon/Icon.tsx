@@ -6,6 +6,7 @@ type IconProps = {
   className?: string;
   size?: SizeProp;
   fixedWidth?: boolean;
+  color?: string;
 };
 
 export const IconNames = {
@@ -23,8 +24,9 @@ const Icon = ({
   className,
   size = '2x',
   fixedWidth = false,
+  color,
 }: IconProps) => {
-  const defaultClasses = 'text-white';
+  const defaultClasses = '';
   const classNames = `${defaultClasses} ${className}`.trim();
 
   return (
@@ -33,6 +35,7 @@ const Icon = ({
       className={classNames}
       size={size}
       fixedWidth={fixedWidth}
+      color={color}
     />
   );
 };

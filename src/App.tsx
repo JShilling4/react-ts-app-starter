@@ -46,11 +46,12 @@ function App() {
         <Icon
           name={leftDrawerVisible ? IconNames.Close : IconNames.Menu}
           size="xl"
+          color="#fff"
         />
       </Button>
 
       <div className="flex h-full">
-        <Drawer isVisible={leftDrawerVisible} theme="light">
+        <Drawer isVisible={leftDrawerVisible} className="bg-slate-200">
           <SideNavigation items={navItems} />
         </Drawer>
         <Outlet />
