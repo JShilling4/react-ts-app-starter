@@ -1,63 +1,40 @@
-import { Outlet } from 'react-router-dom';
-import { TopBar } from './components/layout/TopBar';
-import { Drawer } from './components/layout/Drawer';
-import { useState } from 'react';
-import { Button } from './components/ui/Button';
-import { Icon, IconNames } from './components/ui/Icon';
-import { SideNavigation } from './components/layout/Navigation';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { ExampleComponent } from '@/features/example/ExampleComponent';
 
-function App() {
-  const [leftDrawerVisible, setLeftDrawerVisible] = useState(false);
+const Layout = () => (
+  <div className="min-h-screen bg-background font-sans antialiased">
+    <div className="container mx-auto py-8">
+      <header className="mb-8 flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-foreground">React TS Starter</h1>
+        <ThemeToggle />
+      </header>
+      <main>
+        <div className="space-y-8">
+          <div className="rounded-lg bg-card p-6 shadow-lg">
+            <h2 className="mb-4 text-2xl font-semibold text-card-foreground">
+              Welcome to Your App
+            </h2>
+            <p className="text-muted-foreground">
+              This is a modern React starter template with TypeScript, React
+              Query, Zustand, and Tailwind CSS.
+            </p>
+          </div>
+          <ExampleComponent />
+        </div>
+      </main>
+    </div>
+  </div>
+);
 
-  function handleDrawerToggleClick() {
-    setLeftDrawerVisible(!leftDrawerVisible);
-  }
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    index: true,
+  },
+]);
 
-  const navItems = [
-    {
-      name: 'Dashboard',
-      label: 'Dashboard',
-      icon: IconNames.Home,
-      path: '/dashboard',
-    },
-    {
-      name: 'FirstPage',
-      label: 'First Page',
-      icon: IconNames.Link,
-      path: '/page1',
-    },
-    {
-      name: 'SecondPage',
-      label: 'Second Page',
-      icon: IconNames.Link,
-      path: '/page2',
-    },
-  ];
-
-  return (
-    <>
-      <TopBar />
-
-      <Button
-        className="mr-6 absolute top-4 left-5 z-10"
-        variant="square-icon"
-        onClick={handleDrawerToggleClick}
-      >
-        <Icon
-          name={leftDrawerVisible ? IconNames.Close : IconNames.Menu}
-          size="xl"
-          color="#fff"
-        />
-      </Button>
-
-      <div className="flex h-full">
-        <Drawer isVisible={leftDrawerVisible} className="bg-slate-200">
-          <SideNavigation items={navItems} />
-        </Drawer>
-        <Outlet />
-      </div>
-    </>
-  );
-}
+const App = () => <RouterProvider router={router} />;
 
 export default App;

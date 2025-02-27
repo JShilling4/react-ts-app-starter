@@ -1,36 +1,22 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './redux/store.ts';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import './App.css';
-import {
-  faMagnifyingGlass,
-  faBars,
-  faCircleUser,
-  faClose,
-  faHouse,
-  faLink,
-  faGear,
-} from '@fortawesome/free-solid-svg-icons';
-import { RouterProvider } from 'react-router-dom';
-import router from './router/index.ts';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import App from './App';
+import { queryClient } from './lib/react-query';
+import './styles/globals.css';
 
-library.add(
-  faMagnifyingGlass,
-  faBars,
-  faCircleUser,
-  faClose,
-  faHouse,
-  faLink,
-  faGear,
-);
+// Remove console.log in production
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {};
+  console.debug = () => {};
+}
 
-const root = createRoot(document.getElementById('root') as Element);
-root.render(
-  <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </React.StrictMode>,
 );

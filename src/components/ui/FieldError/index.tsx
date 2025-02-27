@@ -1,3 +1,7 @@
+export type FieldError = {
+  message?: string;
+};
+
 export type ErrorProps = {
   errorMessage?: string | null;
 };

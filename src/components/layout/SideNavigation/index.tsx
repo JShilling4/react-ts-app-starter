@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '../../ui/Icon';
-import { NavItem } from './types';
+
+export type NavItem = {
+  name: string;
+  label: string;
+  icon: string;
+  path: string;
+};
 
 export type SideNavigationProps = {
   items: NavItem[];

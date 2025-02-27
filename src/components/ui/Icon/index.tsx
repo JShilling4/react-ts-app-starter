@@ -41,3 +41,4 @@ const Icon = ({
 };
 
 export { Icon };
+
